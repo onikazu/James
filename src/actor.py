@@ -5,8 +5,12 @@ from ornstein_uhlenbeck_action_noise import OrnsteinUhlenbeckActionNoise
 
 class Actor(object):
     def __init__(self, action_space, observation_space):
-        observation_dim = observation_space.shape[0]
-        action_dim = action_space.shape[0]
+        # action_dim = action_space.shape[0]
+        # observation_dim = observation_space.shape[0]
+
+        # gym環境ではないのでリスト型に対応させる
+        action_dim = len(action_space)
+        observation_dim = len(observation_space)
         self.action_space = action_space
         self.actor_noise = \
             OrnsteinUhlenbeckActionNoise(mu=np.zeros(action_dim))

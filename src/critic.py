@@ -5,16 +5,16 @@ class Critic(object):
     def __init__(self, action_space, observation_space, sess):
         """
 
-        :param action_space: list
-        :param observation_space: list
+        :param action_space: int
+        :param observation_space: int
         :param sess:
         """
         # action_dim = action_space.shape[0]
         # observation_dim = observation_space.shape[0]
 
-        # gym環境ではないのでリスト型に対応させる
-        action_dim = len(action_space)
-        observation_dim = len(observation_space)
+        # gym環境ではないのでint型に対応させる
+        action_dim = action_space
+        observation_dim = observation_space
 
         self.inputs = tf.placeholder(tf.float32, [None, observation_dim])
         self.actions = tf.placeholder(tf.float32, [None, action_dim])
